@@ -8,29 +8,10 @@ import (
 	"strings"
 )
 
-type ErrorResponse struct {
-	StatusCode int      `json:"statusCode`
-	Data       string   `json:"data"`
-	Success    bool     `json:"success"`
-	Errors     []string `json:"errors"`
-	Message    string   `json:"message"`
-}
 
-type JokeResponse struct {
-	StatusCode int    `json:"statusCode`
-	Data       Joke   `json:"data"`
-	Message    string `json:"message"`
-	Success    bool   `json:"success"`
-}
-
-type Joke struct {
-	Categories []string `json:"categories"`
-	ID         int      `json:"id"`
-	Content    string   `json:"content"`
-}
 
 func main(){
-	url_str := "https://api.freeapi.app/api/v1/public/randomjokes/23"
+	url_str := "https://api.freeapi.app/api/v1/public/randomjokes/1"
 
 	//paring the string url to url type for id extraction
 	parsed_url,err := url.Parse(url_str)
@@ -74,6 +55,28 @@ func main(){
 	}
 
 	//printing after parsing
-	fmt.Printf("Joke at %s : %s",jokeId,jokeResponse.Data.Content)
+	fmt.Printf("Joke at id %s : %s",jokeId,jokeResponse.Data.Content)
 	
+}
+
+
+type ErrorResponse struct {
+	StatusCode int      `json:"statusCode`
+	Data       string   `json:"data"`
+	Success    bool     `json:"success"`
+	Errors     []string `json:"errors"`
+	Message    string   `json:"message"`
+}
+
+type JokeResponse struct {
+	StatusCode int    `json:"statusCode`
+	Data       Joke   `json:"data"`
+	Message    string `json:"message"`
+	Success    bool   `json:"success"`
+}
+
+type Joke struct {
+	Categories []string `json:"categories"`
+	ID         int      `json:"id"`
+	Content    string   `json:"content"`
 }
